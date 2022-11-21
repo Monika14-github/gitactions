@@ -1,0 +1,22 @@
+name: sampleflow
+
+on: [push, pull_request]
+
+jobs:  
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clone supercharge website repository
+      uses: actions/checkout@v2
+
+    # This part here is cloning a second repository
+    # While cloning the repository:
+    - name: Clone supercharge docs repository
+      uses: actions/checkout@v2
+      with:
+        repository: supercharge/docs
+        path: resources/docs/2.x
+        ref: 2.x
+
+
